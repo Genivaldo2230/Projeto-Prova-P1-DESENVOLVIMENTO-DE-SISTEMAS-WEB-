@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tads Prova DSW</title>
+    <style>
+        .titulo {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1 class="titulo">TADS - PROVA DSW - SERIES</h1>
+    <ul id="resultado">
+        <!-- Os dados das séries serão inseridos aqui dinamicamente -->
+    </ul>
+</div>
+
+<script>
+    async function listar() {
+        try {
+            const response = await fetch('/series'); // Faz uma solicitação para o endpoint "/serie".
+            if (response.ok) {
+                const series = await response.json(); // Obtém os dados das séries em formato JSON.
+
+                const resultado = document.getElementById('resultado');
+                series.forEach((serie) => {
+                    const html = montarHtml(serie);
+                    resultado.insertAdjacentHTML('beforeend', html); // Insere o conteúdo no elemento com ID "resultado".
+                });
+            } else {
+                throw new Error('Erro na solicitação. Código de status: ' + response.status);
+            }
+        } catch (err) {
+            alert('Erro: ' + err.message);
+        }
+    }
+
+    // Função que recebe dados e monta um trecho de HTML com base nesses dados.
+    function montarHtml(dados) {
+        return '<li>' +
+            '<h3>' + dados.titulo + '</h3>' + // Título
+            '<p>Gênero: ' + dados.genero + '</p>' + // Gênero
+            '<p>Ano de Lançamento: ' + dados.anoLancamento + '</p>' + // Ano de Lançamento
+            '</li>';
+    }
+
+    listar(); // Chama a função listar() para iniciar o processo de busca e inserção do conteúdo HTML.
+</script>
+</body>
+</html>
