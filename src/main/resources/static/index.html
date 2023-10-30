@@ -21,11 +21,12 @@
 <script>
     async function listar() {
         try {
-            const response = await fetch('/series'); // Faz uma solicitação para o endpoint "/serie".
+            const response = await fetch('/serie'); // Faz uma solicitação para o endpoint "/serie".
             if (response.ok) {
                 const series = await response.json(); // Obtém os dados das séries em formato JSON.
 
                 const resultado = document.getElementById('resultado');
+
                 series.forEach((serie) => {
                     const html = montarHtml(serie);
                     resultado.insertAdjacentHTML('beforeend', html); // Insere o conteúdo no elemento com ID "resultado".

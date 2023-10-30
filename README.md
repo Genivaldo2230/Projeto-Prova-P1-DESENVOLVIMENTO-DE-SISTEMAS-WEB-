@@ -19,7 +19,7 @@ http://localhost:8080/serie
 
 Para acessar o código na página series.html, onde é demonstrada a execução do código em DOM funcionando e fazendo a chamada ao código, utilize o link abaixo:
 
-http://localhost:8080/series.html
+http://localhost:8080/index.html
 
 
 

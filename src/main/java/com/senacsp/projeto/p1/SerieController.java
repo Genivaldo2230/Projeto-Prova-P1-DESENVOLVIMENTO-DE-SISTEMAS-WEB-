@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-    @RequestMapping("/series")
+    @RequestMapping("/serie")
 
     public class SerieController {
 
